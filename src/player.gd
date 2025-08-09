@@ -11,19 +11,15 @@ var yaw := 0.0
 
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
-
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	elif what == NOTIFICATION_APPLICATION_FOCUS_OUT:
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	get_viewport().focus_entered.connect(func() -> void:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED)
+	get_viewport().focus_exited.connect(func() -> void:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED \
+			and event is InputEventMouseMotion:
 		pitch -= event.relative.y * 0.01
 		pitch = clampf(pitch, -PI / 2.0, PI / 2.0)
 		
