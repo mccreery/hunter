@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=8 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/Cabin.fbx" id="2_06ig3"]
+[ext_resource type="Material" uid="uid://dcvyfg7ls46n1" path="res://assets/Outline.tres" id="3_836ik"]
+[ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/Tree.fbx" id="4_836ik"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2eim"]
+next_pass = ExtResource("3_836ik")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_06ig3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_836ik"]
+next_pass = ExtResource("3_836ik")
 
 [node name="Main" type="Node3D"]
 
@@ -12,9 +20,105 @@
 [node name="Cabin" parent="." instance=ExtResource("2_06ig3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.304011, 0, -3.40896)
 
+[node name="Cube" parent="Cabin" index="0"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_003" parent="Cabin" index="1"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_004" parent="Cabin" index="2"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_005" parent="Cabin" index="3"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_006" parent="Cabin" index="4"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_007" parent="Cabin" index="5"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_001" parent="Cabin" index="6"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_002" parent="Cabin" index="7"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_008" parent="Cabin" index="8"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_009" parent="Cabin" index="9"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_010" parent="Cabin" index="10"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_011" parent="Cabin" index="11"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_012" parent="Cabin" index="12"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_013" parent="Cabin" index="13"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_014" parent="Cabin" index="14"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_015" parent="Cabin" index="15"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_016" parent="Cabin" index="16"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_017" parent="Cabin" index="17"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_018" parent="Cabin" index="18"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_019" parent="Cabin" index="19"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_020" parent="Cabin" index="20"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_021" parent="Cabin" index="21"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_022" parent="Cabin" index="22"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_023" parent="Cabin" index="23"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
+[node name="Cube_024" parent="Cabin" index="24"]
+material_override = SubResource("StandardMaterial3D_j2eim")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.441547, 0.44946, -0.776545, 0.0555337, 0.850134, 0.52363, 0.895518, -0.274332, 0.350414, -0.314066, 5.07245, -0.601703)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(500, 0, 0, 0, 500, 0, 0, 0, 500, 0, 0, 0)
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(499.068, 0, 0, 0, 499.068, 0, 0, 0, 499.068, 0, 0, 0)
 mesh = SubResource("PlaneMesh_06ig3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43036, -0.0486691, 4.07494)
+material_override = SubResource("StandardMaterial3D_836ik")
+skeleton = NodePath("Tree")
+
+[node name="Tree" parent="MeshInstance3D" instance=ExtResource("4_836ik")]
+
+[node name="Tree2" parent="." instance=ExtResource("4_836ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.59829, -0.124599, 7.23829)
+
+[node name="Tree3" parent="." instance=ExtResource("4_836ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72172, 0.125263, 3.9367)
+
+[node name="Tree4" parent="." instance=ExtResource("4_836ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8794, -0.0346622, -4.39124)
+
+[node name="Tree5" parent="." instance=ExtResource("4_836ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0116, -0.155484, -1.42609)
+
+[editable path="Cabin"]
