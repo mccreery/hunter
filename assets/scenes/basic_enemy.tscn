@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvlw5modpihn4"]
+
+[ext_resource type="Script" uid="uid://drjp44erm3pif" path="res://src/basic_enemy.gd" id="1_2ahhn"]
+[ext_resource type="Texture2D" uid="uid://dklgg8kamyi7m" path="res://assets/sprites/deer.png" id="1_2eh7b"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ahhn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ahhn"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_2eh7b")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_6xda2"]
+material = SubResource("StandardMaterial3D_2ahhn")
+size = Vector2(1.8, 3)
+center_offset = Vector3(0, 1.5, 0)
+
+[node name="BasicEnemy" type="CharacterBody3D"]
+script = ExtResource("1_2ahhn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_2ahhn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_6xda2")
