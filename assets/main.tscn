@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://btj2uvv8wdy26"]
+
+[ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/player.tscn" id="1_db5cl"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_db5cl")]
+
+[node name="TestBoxes" type="Node" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestBoxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -2)
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TestBoxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.68203, 0.5, -2.46539)
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TestBoxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.774072, 0.5, -5.77691)
+mesh = SubResource("BoxMesh_ig7tw")
+skeleton = NodePath("../..")
