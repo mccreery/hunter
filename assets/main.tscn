@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=12 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/Cabin.fbx" id="2_06ig3"]
@@ -8,16 +8,30 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2eim"]
 next_pass = ExtResource("3_836ik")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_836ik"]
+size = Vector3(8.37494, 1.20374, 5.1249)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j2eim"]
+size = Vector3(1.38488, 1.15527, 1.77011)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_06ig3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ujfqy"]
+size = Vector3(2, 0.2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_836ik"]
 next_pass = ExtResource("3_836ik")
+
+[sub_resource type="Environment" id="Environment_j2eim"]
+background_mode = 1
+background_color = Color(0.0164517, 0.0671743, 0.17116, 1)
 
 [node name="Main" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_db5cl")]
 
 [node name="Cabin" parent="." instance=ExtResource("2_06ig3")]
+physics_interpolation_mode = 1
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.304011, 0, -3.40896)
 
 [node name="Cube" parent="Cabin" index="0"]
@@ -95,30 +109,548 @@ material_override = SubResource("StandardMaterial3D_j2eim")
 [node name="Cube_024" parent="Cabin" index="24"]
 material_override = SubResource("StandardMaterial3D_j2eim")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Cabin"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cabin/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.10037, 0.101868, 0.508153)
+shape = SubResource("BoxShape3D_836ik")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Cabin/StaticBody3D"]
+transform = Transform3D(0.884035, 0.467421, 5.06899e-09, -0.467421, 0.884035, 2.04316e-08, 5.06899e-09, -2.04316e-08, 1, 0.360393, -0.144395, -0.797534)
+shape = SubResource("BoxShape3D_j2eim")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.441547, 0.44946, -0.776545, 0.0555337, 0.850134, 0.52363, 0.895518, -0.274332, 0.350414, -0.314066, 5.07245, -0.601703)
+transform = Transform3D(0.6501, -0.393124, -0.650249, 0.529649, -0.379158, 0.758757, -0.544832, -0.837671, -0.0382729, -0.314066, 5.07245, -0.601703)
+light_color = Color(0.3366, 0.50908, 0.66, 1)
+light_energy = 0.435
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 38.93
+light_specular = 0.0
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(499.068, 0, 0, 0, 499.068, 0, 0, 0, 499.068, 0, 0, 0)
 mesh = SubResource("PlaneMesh_06ig3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+shape = SubResource("BoxShape3D_ujfqy")
+
+[node name="Trees" type="Node" parent="."]
+
+[node name="Tree" parent="Trees" instance=ExtResource("4_836ik")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.43036, -0.0486691, 4.07494)
+
+[node name="Cylinder_007" parent="Trees/Tree" index="0"]
 material_override = SubResource("StandardMaterial3D_836ik")
-skeleton = NodePath("Tree")
 
-[node name="Tree" parent="MeshInstance3D" instance=ExtResource("4_836ik")]
+[node name="Tree2" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0277, -0.0486691, -1.70936)
 
-[node name="Tree2" parent="." instance=ExtResource("4_836ik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.59829, -0.124599, 7.23829)
+[node name="Cylinder_007" parent="Trees/Tree2" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
 
-[node name="Tree3" parent="." instance=ExtResource("4_836ik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72172, 0.125263, 3.9367)
+[node name="Tree3" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.234989, 0, 0.971998, 0, 1, 0, -0.971998, 0, -0.234989, 10.0138, -0.0486691, -5.16277)
 
-[node name="Tree4" parent="." instance=ExtResource("4_836ik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8794, -0.0346622, -4.39124)
+[node name="Cylinder_007" parent="Trees/Tree3" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
 
-[node name="Tree5" parent="." instance=ExtResource("4_836ik")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0116, -0.155484, -1.42609)
+[node name="Tree4" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.234989, 0, 0.971998, 0, 1, 0, -0.971998, 0, -0.234989, 5.47176, -0.0486691, 0.665039)
+
+[node name="Cylinder_007" parent="Trees/Tree4" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree5" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.883349, 0, 0.468716, 0, 1, 0, -0.468716, 0, 0.883349, -5.74905, -0.0486691, 10.2708)
+
+[node name="Cylinder_007" parent="Trees/Tree5" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree6" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.883349, 0, 0.468716, 0, 1, 0, -0.468716, 0, 0.883349, -12.5213, -0.0486691, 7.31612)
+
+[node name="Cylinder_007" parent="Trees/Tree6" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree7" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.984625, 0, -0.174679, 0, 1, 0, 0.174679, 0, 0.984625, -11.6815, -0.048671, -17.4414)
+
+[node name="Cylinder_007" parent="Trees/Tree7" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree8" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.984625, 0, -0.174679, 0, 1, 0, 0.174679, 0, 0.984625, -15.1977, -0.048671, -23.9398)
+
+[node name="Cylinder_007" parent="Trees/Tree8" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree9" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.0615886, 0, 0.998102, 0, 1, 0, -0.998102, 0, -0.0615886, 6.12343, -0.048671, -23.6646)
+
+[node name="Cylinder_007" parent="Trees/Tree9" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree10" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.0615886, 0, 0.998102, 0, 1, 0, -0.998102, 0, -0.0615886, 0.633252, -0.048671, -18.7198)
+
+[node name="Cylinder_007" parent="Trees/Tree10" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree11" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.951643, 0, 0.307207, 0, 1, 0, -0.307207, 0, 0.951643, -12.093, -0.048671, -11.2217)
+
+[node name="Cylinder_007" parent="Trees/Tree11" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree12" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.951643, 0, 0.307207, 0, 1, 0, -0.307207, 0, 0.951643, -18.2449, -0.048671, -15.314)
+
+[node name="Cylinder_007" parent="Trees/Tree12" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree13" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.119478, 0, -0.992837, 0, 1, 0, 0.992837, 0, -0.119478, 14.3836, -0.048671, -14.165)
+
+[node name="Cylinder_007" parent="Trees/Tree13" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree14" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.119478, 0, -0.992837, 0, 1, 0, 0.992837, 0, -0.119478, 20.6757, -0.048671, -18.0383)
+
+[node name="Cylinder_007" parent="Trees/Tree14" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree15" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.993112, 0, 0.117173, 0, 1, 0, -0.117173, 0, 0.993112, 21.5904, -0.048671, 3.26501)
+
+[node name="Cylinder_007" parent="Trees/Tree15" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree16" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.993112, 0, 0.117173, 0, 1, 0, -0.117173, 0, 0.993112, 16.347, -0.048671, -1.94076)
+
+[node name="Cylinder_007" parent="Trees/Tree16" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree17" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.359818, 0, -0.933023, 0, 1, 0, 0.933023, 0, 0.359818, 8.15067, -0.048671, -14.2289)
+
+[node name="Cylinder_007" parent="Trees/Tree17" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree18" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.359818, 0, -0.933023, 0, 1, 0, 0.933023, 0, 0.359818, 11.8934, -0.048671, -20.5996)
+
+[node name="Cylinder_007" parent="Trees/Tree18" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree19" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.445417, 0, -0.895323, 0, 1, 0, 0.895323, 0, 0.445417, 20.9007, -0.0486691, -32.6739)
+
+[node name="Cylinder_007" parent="Trees/Tree19" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree20" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.445417, 0, -0.895323, 0, 1, 0, 0.895323, 0, 0.445417, 24.0318, -0.0486691, -39.3664)
+
+[node name="Cylinder_007" parent="Trees/Tree20" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree21" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.765584, 0, 0.643336, 0, 1, 0, -0.643336, 0, 0.765584, 36.496, -0.0486691, -22.0657)
+
+[node name="Cylinder_007" parent="Trees/Tree21" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree22" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.765584, 0, 0.643336, 0, 1, 0, -0.643336, 0, 0.765584, 29.2551, -0.0486691, -23.5365)
+
+[node name="Cylinder_007" parent="Trees/Tree22" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree23" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.813111, 0, -0.582109, 0, 1, 0, 0.582109, 0, 0.813111, 15.6569, -0.0486691, -29.3041)
+
+[node name="Cylinder_007" parent="Trees/Tree23" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree24" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.813111, 0, -0.582109, 0, 1, 0, 0.582109, 0, 0.813111, 15.2858, -0.0486691, -36.6835)
+
+[node name="Cylinder_007" parent="Trees/Tree24" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree25" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.282174, 0, -0.959363, 0, 1, 0, 0.959363, 0, 0.282174, 37.8258, -0.048671, -46.9591)
+
+[node name="Cylinder_007" parent="Trees/Tree25" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree26" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.282174, 0, -0.959363, 0, 1, 0, 0.959363, 0, 0.282174, 42.0778, -0.048671, -53.0017)
+
+[node name="Cylinder_007" parent="Trees/Tree26" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree27" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.866191, 0, 0.499713, 0, 1, 0, -0.499713, 0, 0.866191, 51.3282, -0.048671, -33.7898)
+
+[node name="Cylinder_007" parent="Trees/Tree27" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree28" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.866191, 0, 0.499713, 0, 1, 0, -0.499713, 0, 0.866191, 44.4556, -0.048671, -36.5028)
+
+[node name="Cylinder_007" parent="Trees/Tree28" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree29" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.698927, 0, -0.715193, 0, 1, 0, 0.715193, 0, 0.698927, 32.0739, -0.048671, -44.5571)
+
+[node name="Cylinder_007" parent="Trees/Tree29" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree30" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.698927, 0, -0.715193, 0, 1, 0, 0.715193, 0, 0.698927, 32.9977, -0.048671, -51.8879)
+
+[node name="Cylinder_007" parent="Trees/Tree30" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree31" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.942128, 0, -0.335254, 0, 1, 0, 0.335254, 0, -0.942128, 46.5023, -0.048671, -22.1631)
+
+[node name="Cylinder_007" parent="Trees/Tree31" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree32" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.942128, 0, -0.335254, 0, 1, 0, 0.335254, 0, -0.942128, 52.7727, -0.048671, -18.2548)
+
+[node name="Cylinder_007" parent="Trees/Tree32" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree33" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.547257, 0, -0.836965, 0, 1, 0, 0.836965, 0, 0.547257, 34.1068, -0.048671, -7.947)
+
+[node name="Cylinder_007" parent="Trees/Tree33" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree34" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.547257, 0, -0.836965, 0, 1, 0, 0.836965, 0, 0.547257, 36.4321, -0.048671, -14.9603)
+
+[node name="Cylinder_007" parent="Trees/Tree34" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree35" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.675088, 0, -0.737737, 0, 1, 0, 0.737737, 0, -0.675088, 43.7832, -0.048671, -27.772)
+
+[node name="Cylinder_007" parent="Trees/Tree35" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree36" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.675088, 0, -0.737737, 0, 1, 0, 0.737737, 0, -0.675088, 51.1541, -0.048671, -27.2587)
+
+[node name="Cylinder_007" parent="Trees/Tree36" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree37" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.561376, 0, -0.827561, 0, 1, 0, 0.827561, 0, 0.561376, -5.04511, -0.0486691, 28.3208)
+
+[node name="Cylinder_007" parent="Trees/Tree37" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree38" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.561376, 0, -0.827561, 0, 1, 0, 0.827561, 0, 0.561376, -2.83906, -0.0486691, 21.2691)
+
+[node name="Cylinder_007" parent="Trees/Tree38" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree39" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.67247, 0, 0.740124, 0, 1, 0, -0.740124, 0, 0.67247, 11.831, -0.0486691, 36.7435)
+
+[node name="Cylinder_007" parent="Trees/Tree39" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree40" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.67247, 0, 0.740124, 0, 1, 0, -0.740124, 0, 0.67247, 4.45835, -0.0486691, 36.2563)
+
+[node name="Cylinder_007" parent="Trees/Tree40" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree41" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.883782, 0, -0.467899, 0, 1, 0, 0.467899, 0, 0.883782, -9.79012, -0.0486691, 32.3628)
+
+[node name="Cylinder_007" parent="Trees/Tree41" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree42" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.883782, 0, -0.467899, 0, 1, 0, 0.467899, 0, 0.883782, -11.1467, -0.0486691, 25.0997)
+
+[node name="Cylinder_007" parent="Trees/Tree42" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree43" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.408187, 0, -0.912898, 0, 1, 0, 0.912898, 0, 0.408187, 9.81306, -0.048671, 11.8964)
+
+[node name="Cylinder_007" parent="Trees/Tree43" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree44" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.408187, 0, -0.912898, 0, 1, 0, 0.912898, 0, 0.408187, 13.217, -0.048671, 5.33847)
+
+[node name="Cylinder_007" parent="Trees/Tree44" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree45" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.791416, 0, 0.611278, 0, 1, 0, -0.611278, 0, 0.791416, 24.9584, -0.048671, 23.1375)
+
+[node name="Cylinder_007" parent="Trees/Tree45" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree46" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.791416, 0, 0.611278, 0, 1, 0, -0.611278, 0, 0.791416, 17.7842, -0.048671, 21.3699)
+
+[node name="Cylinder_007" parent="Trees/Tree46" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree47" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.788462, 0, -0.615084, 0, 1, 0, 0.615084, 0, 0.788462, 4.43493, -0.048671, 15.0474)
+
+[node name="Cylinder_007" parent="Trees/Tree47" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree48" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.788462, 0, -0.615084, 0, 1, 0, 0.615084, 0, 0.788462, 4.36797, -0.048671, 7.65903)
+
+[node name="Cylinder_007" parent="Trees/Tree48" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree49" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.888705, 0, -0.458479, 0, 1, 0, 0.458479, 0, -0.888705, 21.734, -0.048671, 35.3061)
+
+[node name="Cylinder_007" parent="Trees/Tree49" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree50" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.888705, 0, -0.458479, 0, 1, 0, 0.458479, 0, -0.888705, 28.4716, -0.048671, 38.3389)
+
+[node name="Cylinder_007" parent="Trees/Tree50" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree51" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.654477, 0, -0.756082, 0, 1, 0, 0.756082, 0, 0.654477, 11.3553, -0.048671, 51.055)
+
+[node name="Cylinder_007" parent="Trees/Tree51" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree52" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.654477, 0, -0.756082, 0, 1, 0, 0.756082, 0, 0.654477, 12.7199, -0.048671, 43.7934)
+
+[node name="Cylinder_007" parent="Trees/Tree52" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree53" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.57014, 0, -0.821547, 0, 1, 0, 0.821547, 0, -0.57014, 18.2878, -0.048671, 30.1121)
+
+[node name="Cylinder_007" parent="Trees/Tree53" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree54" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.57014, 0, -0.821547, 0, 1, 0, 0.821547, 0, -0.57014, 25.661, -0.048671, 29.6331)
+
+[node name="Cylinder_007" parent="Trees/Tree54" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree55" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.996069, 0, 0.0885812, 0, 1, 0, -0.0885812, 0, -0.996069, -26.2204, -0.0486691, -3.09113)
+
+[node name="Cylinder_007" parent="Trees/Tree55" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree56" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.996069, 0, 0.0885812, 0, 1, 0, -0.0885812, 0, -0.996069, -22.1535, -0.0486691, 3.07766)
+
+[node name="Cylinder_007" parent="Trees/Tree56" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree57" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.147965, 0, -0.988993, 0, 1, 0, 0.988993, 0, 0.147965, -43.4181, -0.0486691, 4.65362)
+
+[node name="Cylinder_007" parent="Trees/Tree57" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree58" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.147965, 0, -0.988993, 0, 1, 0, 0.988993, 0, 0.147965, -38.3777, -0.0486691, -0.748936)
+
+[node name="Cylinder_007" parent="Trees/Tree58" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree59" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.921396, 0, -0.388626, 0, 1, 0, 0.388626, 0, -0.921396, -26.3501, -0.0486691, -9.32302)
+
+[node name="Cylinder_007" parent="Trees/Tree59" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree60" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.921396, 0, -0.388626, 0, 1, 0, 0.388626, 0, -0.921396, -19.8663, -0.0486691, -5.78003)
+
+[node name="Cylinder_007" parent="Trees/Tree60" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree61" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.965281, 0, 0.261212, 0, 1, 0, -0.261212, 0, -0.965281, -22.8958, -0.048671, 18.8057)
+
+[node name="Cylinder_007" parent="Trees/Tree61" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree62" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.965281, 0, 0.261212, 0, 1, 0, -0.261212, 0, -0.965281, -19.969, -0.048671, 25.5901)
+
+[node name="Cylinder_007" parent="Trees/Tree62" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree63" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.0270666, 0, -0.999634, 0, 1, 0, 0.999634, 0, -0.0270666, -41.182, -0.048671, 23.4273)
+
+[node name="Cylinder_007" parent="Trees/Tree63" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree64" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.0270666, 0, -0.999634, 0, 1, 0, 0.999634, 0, -0.0270666, -35.2754, -0.048671, 18.9883)
+
+[node name="Cylinder_007" parent="Trees/Tree64" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree65" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.975115, 0, -0.221702, 0, 1, 0, 0.221702, 0, -0.975115, -21.935, -0.048671, 12.647)
+
+[node name="Cylinder_007" parent="Trees/Tree65" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree66" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.975115, 0, -0.221702, 0, 1, 0, 0.221702, 0, -0.975115, -16.1697, -0.048671, 17.2681)
+
+[node name="Cylinder_007" parent="Trees/Tree66" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree67" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.206955, 0, 0.97835, 0, 1, 0, -0.97835, 0, 0.206955, -48.5682, -0.048671, 13.2334)
+
+[node name="Cylinder_007" parent="Trees/Tree67" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree68" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(0.206955, 0, 0.97835, 0, 1, 0, -0.97835, 0, 0.206955, -55.1787, -0.048671, 16.5341)
+
+[node name="Cylinder_007" parent="Trees/Tree68" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree69" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.999587, 0, -0.0287417, 0, 1, 0, 0.0287417, 0, -0.999587, -54.2027, -0.048671, -4.7665)
+
+[node name="Cylinder_007" parent="Trees/Tree69" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree70" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.999587, 0, -0.0287417, 0, 1, 0, 0.0287417, 0, -0.999587, -49.4411, -0.048671, 0.883273)
+
+[node name="Cylinder_007" parent="Trees/Tree70" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree71" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.275755, 0, 0.961228, 0, 1, 0, -0.961228, 0, -0.275755, -42.3654, -0.048671, 13.8491)
+
+[node name="Cylinder_007" parent="Trees/Tree71" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="Tree72" parent="Trees" instance=ExtResource("4_836ik")]
+transform = Transform3D(-0.275755, 0, 0.961228, 0, 1, 0, -0.961228, 0, -0.275755, -46.6577, -0.048671, 19.8632)
+
+[node name="Cylinder_007" parent="Trees/Tree72" index="0"]
+material_override = SubResource("StandardMaterial3D_836ik")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j2eim")
+
+[node name="BG Music" type="AudioStreamPlayer" parent="."]
+volume_db = -1.933
+autoplay = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [editable path="Cabin"]
+[editable path="Trees/Tree"]
+[editable path="Trees/Tree2"]
+[editable path="Trees/Tree3"]
+[editable path="Trees/Tree4"]
+[editable path="Trees/Tree5"]
+[editable path="Trees/Tree6"]
+[editable path="Trees/Tree7"]
+[editable path="Trees/Tree8"]
+[editable path="Trees/Tree9"]
+[editable path="Trees/Tree10"]
+[editable path="Trees/Tree11"]
+[editable path="Trees/Tree12"]
+[editable path="Trees/Tree13"]
+[editable path="Trees/Tree14"]
+[editable path="Trees/Tree15"]
+[editable path="Trees/Tree16"]
+[editable path="Trees/Tree17"]
+[editable path="Trees/Tree18"]
+[editable path="Trees/Tree19"]
+[editable path="Trees/Tree20"]
+[editable path="Trees/Tree21"]
+[editable path="Trees/Tree22"]
+[editable path="Trees/Tree23"]
+[editable path="Trees/Tree24"]
+[editable path="Trees/Tree25"]
+[editable path="Trees/Tree26"]
+[editable path="Trees/Tree27"]
+[editable path="Trees/Tree28"]
+[editable path="Trees/Tree29"]
+[editable path="Trees/Tree30"]
+[editable path="Trees/Tree31"]
+[editable path="Trees/Tree32"]
+[editable path="Trees/Tree33"]
+[editable path="Trees/Tree34"]
+[editable path="Trees/Tree35"]
+[editable path="Trees/Tree36"]
+[editable path="Trees/Tree37"]
+[editable path="Trees/Tree38"]
+[editable path="Trees/Tree39"]
+[editable path="Trees/Tree40"]
+[editable path="Trees/Tree41"]
+[editable path="Trees/Tree42"]
+[editable path="Trees/Tree43"]
+[editable path="Trees/Tree44"]
+[editable path="Trees/Tree45"]
+[editable path="Trees/Tree46"]
+[editable path="Trees/Tree47"]
+[editable path="Trees/Tree48"]
+[editable path="Trees/Tree49"]
+[editable path="Trees/Tree50"]
+[editable path="Trees/Tree51"]
+[editable path="Trees/Tree52"]
+[editable path="Trees/Tree53"]
+[editable path="Trees/Tree54"]
+[editable path="Trees/Tree55"]
+[editable path="Trees/Tree56"]
+[editable path="Trees/Tree57"]
+[editable path="Trees/Tree58"]
+[editable path="Trees/Tree59"]
+[editable path="Trees/Tree60"]
+[editable path="Trees/Tree61"]
+[editable path="Trees/Tree62"]
+[editable path="Trees/Tree63"]
+[editable path="Trees/Tree64"]
+[editable path="Trees/Tree65"]
+[editable path="Trees/Tree66"]
+[editable path="Trees/Tree67"]
+[editable path="Trees/Tree68"]
+[editable path="Trees/Tree69"]
+[editable path="Trees/Tree70"]
+[editable path="Trees/Tree71"]
+[editable path="Trees/Tree72"]

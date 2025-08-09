@@ -1,8 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://0cxve1d7o427"]
+[gd_scene load_steps=6 format=3 uid="uid://0cxve1d7o427"]
 
 [ext_resource type="Script" uid="uid://dy7njegntggim" path="res://src/player.gd" id="1_4flbx"]
+[ext_resource type="Texture2D" uid="uid://d21pvquep41xr" path="res://assets/Untitled_Artwork.png" id="2_3mip4"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hk8x1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_insbl"]
+render_priority = -1
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("2_3mip4")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_rug40"]
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_4flbx")
@@ -14,3 +25,9 @@ shape = SubResource("CapsuleShape3D_hk8x1")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54576, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.26542, 0, 0, 0, 1.50799, 0, 0, 0, 1.50799, -0.107909, 1.25839, -0.836588)
+layers = 2
+material_override = SubResource("StandardMaterial3D_insbl")
+mesh = SubResource("QuadMesh_rug40")
