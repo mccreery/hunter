@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
 [ext_resource type="Texture2D" uid="uid://dtvhjd12en5wl" path="res://assets/sprites/Untitled_Artwork.png" id="7_xplbd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etxf0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rsl6"]
 next_pass = ExtResource("3_836ik")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_836ik"]
@@ -37,7 +37,7 @@ size = Vector3(0.178182, 2.35464, 0.196525)
 size = Vector3(1.38488, 1.15527, 1.77011)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfrgt"]
-albedo_color = Color(0.707967, 0.707966, 0.707966, 1)
+albedo_color = Color(0.92, 0.92, 0.92, 1)
 albedo_texture = ExtResource("4_xplbd")
 uv1_scale = Vector3(65, 65, 65)
 
@@ -96,26 +96,8 @@ buffer = PackedFloat32Array(-0.730161, 0, 0, -87.3396, 0, 0.730161, 0, 0, 0, 0, 
 physics_interpolation_mode = 1
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.304011, 0, -3.40896)
 
-[node name="Cube" parent="Cabin" index="0"]
-material_override = SubResource("StandardMaterial3D_etxf0")
-
-[node name="Cube_007" parent="Cabin" index="1"]
-material_override = SubResource("StandardMaterial3D_etxf0")
-
-[node name="Cube_001" parent="Cabin" index="2"]
-material_override = SubResource("StandardMaterial3D_etxf0")
-
-[node name="Cube_010" parent="Cabin" index="3"]
-material_override = SubResource("StandardMaterial3D_etxf0")
-
-[node name="Cube_024" parent="Cabin" index="4"]
-material_override = SubResource("StandardMaterial3D_etxf0")
-
-[node name="Cube_026" parent="Cabin" index="5"]
-material_override = SubResource("StandardMaterial3D_etxf0")
-
-[node name="Cube_029" parent="Cabin" index="12"]
-material_override = SubResource("StandardMaterial3D_etxf0")
+[node name="Cube_031" parent="Cabin" index="0"]
+material_override = SubResource("StandardMaterial3D_6rsl6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cabin"]
 
@@ -165,8 +147,8 @@ shape = SubResource("BoxShape3D_j2eim")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.629652, 0.685628, -0.365314, -0.0377104, 0.442705, 0.895874, 0.775962, 0.577865, -0.252895, -0.314066, 5.07245, -0.601703)
-light_color = Color(0.5546, 0.57348, 0.59, 1)
-light_energy = 0.653
+light_color = Color(0.0694045, 0.172814, 0.112829, 1)
+light_energy = 1.193
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_angular_distance = 38.93
@@ -174,7 +156,7 @@ light_specular = 0.0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.560074, -0.828126, -0.022863, 0.529649, -0.379158, 0.758756, -0.637015, 0.412851, 0.650973, -0.314066, 5.07245, -0.601703)
-light_color = Color(0.5546, 0.57348, 0.59, 1)
+light_color = Color(0.318249, 0.308957, 0.415349, 1)
 light_energy = 0.7
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
