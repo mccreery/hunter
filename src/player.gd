@@ -11,10 +11,19 @@ var yaw := 0.0
 
 
 func _ready() -> void:
-	get_viewport().focus_entered.connect(func() -> void:
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+	# Release the mouse if the window loses focus
 	get_viewport().focus_exited.connect(func() -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE)
+
+
+# Recapture the mouse when the player clicks the window
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed \
+			and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		get_viewport().set_input_as_handled()
 
 
 func _unhandled_input(event: InputEvent) -> void:
