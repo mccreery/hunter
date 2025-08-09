@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+const RADIANS_PER_DOT = deg_to_rad(0.022)
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -8,6 +8,7 @@ var pitch := 0.0
 var yaw := 0.0
 
 @export var camera: Node3D
+@export var mouse_sensitivity := 3.5
 
 
 func _ready() -> void:
@@ -29,12 +30,14 @@ func _input(event: InputEvent) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED \
 			and event is InputEventMouseMotion:
-		pitch -= event.relative.y * 0.01
+		var relative_angle = RADIANS_PER_DOT * mouse_sensitivity * event.relative
+
+		pitch -= relative_angle.y
 		pitch = clampf(pitch, -PI / 2.0, PI / 2.0)
-		
-		yaw -= event.relative.x * 0.01
+
+		yaw -= relative_angle.x
 		yaw = fmod(yaw, TAU)
-		
+
 		transform.basis = Basis.IDENTITY.rotated(Vector3.UP, yaw)
 		camera.transform.basis = Basis.IDENTITY.rotated(Vector3.RIGHT, pitch)
 
