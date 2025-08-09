@@ -1,9 +1,9 @@
 [gd_scene load_steps=18 format=3 uid="uid://btj2uvv8wdy26"]
 
-[ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/player.tscn" id="1_db5cl"]
-[ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/Cabin.fbx" id="2_06ig3"]
+[ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
+[ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
 [ext_resource type="Material" uid="uid://dcvyfg7ls46n1" path="res://assets/Outline.tres" id="3_836ik"]
-[ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/Tree.fbx" id="4_836ik"]
+[ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/models/Tree.fbx" id="4_836ik"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2eim"]
 next_pass = ExtResource("3_836ik")

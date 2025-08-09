@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://qgkjm0dn20mu"
-path="res://.godot/imported/Cabin.fbx-cf5775be2d1f92491699b7a30a61572f.scn"
+path="res://.godot/imported/Cabin.fbx-32bfcd7e6a58d63cf08bb19e0dcc3524.scn"
 
 [deps]
 
-source_file="res://assets/Cabin.fbx"
-dest_files=["res://.godot/imported/Cabin.fbx-cf5775be2d1f92491699b7a30a61572f.scn"]
+source_file="res://assets/models/Cabin.fbx"
+dest_files=["res://.godot/imported/Cabin.fbx-32bfcd7e6a58d63cf08bb19e0dcc3524.scn"]
 
 [params]
 
