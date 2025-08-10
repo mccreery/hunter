@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=35 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" path="res://assets/scenes/enemy_corpse.tscn" id="9_p5d64"]
 [ext_resource type="Texture2D" uid="uid://cx21m4ebixhxj" path="res://assets/sprites/fire2.png" id="10_ov4sg"]
 [ext_resource type="Texture2D" uid="uid://bgk8buasdlhqv" path="res://assets/sprites/fire.png" id="11_ua5jh"]
+[ext_resource type="Script" uid="uid://b5qfhtv3l86or" path="res://assets/scenes/FirePlace.gd" id="12_ua5jh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rsl6"]
 next_pass = ExtResource("3_836ik")
@@ -99,17 +100,17 @@ albedo_texture = ExtResource("8_6rsl6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_48cn3"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ov4sg"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytb86"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.8,
 "texture": ExtResource("10_ov4sg")
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_ua5jh")
 }],
 "loop": true,
-"name": &"default",
+"name": &"FirePlaceAnim",
 "speed": 5.0
 }]
 
@@ -709,10 +710,13 @@ mesh = SubResource("QuadMesh_48cn3")
 [node name="EnemyCorpse" parent="." instance=ExtResource("9_p5d64")]
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, -1.19068, 1.16867, -10.5797)
-sprite_frames = SubResource("SpriteFrames_ov4sg")
-autoplay = "default"
-frame_progress = 0.0109546
+process_mode = 3
+transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, -1.21417, 1.18786, -10.4624)
+billboard = 2
+sprite_frames = SubResource("SpriteFrames_ytb86")
+animation = &"FirePlaceAnim"
+frame_progress = 0.199259
+script = ExtResource("12_ua5jh")
 
 [editable path="Cabin"]
 [editable path="Trees/Tree"]
