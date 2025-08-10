@@ -648,7 +648,6 @@ target = NodePath("../Player")
 [node name="SingleGrass" type="MeshInstance3D" parent="Grass"]
 visible = false
 mesh = SubResource("QuadMesh_6rsl6")
-skeleton = NodePath("../../root/@EditorNode@21272/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Main")
 
 [node name="InstancedGrass" type="MultiMeshInstance3D" parent="Grass"]
 multimesh = SubResource("MultiMesh_vesw4")
