@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=31 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
 [ext_resource type="Texture2D" uid="uid://b0jt31sg30cpa" path="res://assets/sprites/Grass.png" id="7_xplbd"]
 [ext_resource type="Texture2D" uid="uid://0jf65fa6i52l" path="res://assets/sprites/gunmount.png" id="8_6rsl6"]
+[ext_resource type="PackedScene" uid="uid://d23hvp7rbw47w" path="res://assets/scenes/enemy_corpse.tscn" id="9_p5d64"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rsl6"]
 next_pass = ExtResource("3_836ik")
@@ -42,6 +43,7 @@ albedo_texture = ExtResource("6_6rsl6")
 uv1_scale = Vector3(65, 65, 65)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_06ig3"]
+material = SubResource("StandardMaterial3D_sfrgt")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujfqy"]
 size = Vector3(2, 0.2, 2)
@@ -172,7 +174,7 @@ light_specular = 0.0
 
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_sfrgt")
+visible = false
 mesh = SubResource("PlaneMesh_06ig3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
@@ -687,6 +689,8 @@ mouse_filter = 2
 transform = Transform3D(1.6, 0, 0, 0, 0.578028, 0, 0, 0, 0.781, -1.18058, 2.00988, -10.161)
 material_override = SubResource("StandardMaterial3D_p5d64")
 mesh = SubResource("QuadMesh_48cn3")
+
+[node name="EnemyCorpse" parent="." instance=ExtResource("9_p5d64")]
 
 [editable path="Cabin"]
 [editable path="Trees/Tree"]
