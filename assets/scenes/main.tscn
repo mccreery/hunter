@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
 [ext_resource type="Material" uid="uid://dcvyfg7ls46n1" path="res://assets/Outline.tres" id="3_836ik"]
 [ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/models/Tree.fbx" id="4_836ik"]
-[ext_resource type="PackedScene" path="res://assets/scenes/basic_enemy.tscn" id="5_etxf0"]
+[ext_resource type="PackedScene" uid="uid://bvlw5modpihn4" path="res://assets/scenes/basic_enemy.tscn" id="5_etxf0"]
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
 [ext_resource type="Texture2D" uid="uid://b0jt31sg30cpa" path="res://assets/sprites/Grass.png" id="7_xplbd"]
 
@@ -644,6 +644,36 @@ mesh = SubResource("QuadMesh_6rsl6")
 
 [node name="InstancedGrass" type="MultiMeshInstance3D" parent="Grass"]
 multimesh = SubResource("MultiMesh_xplbd")
+
+[node name="Reticle" type="Node" parent="."]
+
+[node name="Horizontal" type="ColorRect" parent="Reticle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -1.0
+offset_right = 10.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Vertical" type="ColorRect" parent="Reticle"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -10.0
+offset_right = 1.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [editable path="Cabin"]
 [editable path="Trees/Tree"]

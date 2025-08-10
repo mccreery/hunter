@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bvlw5modpihn4"]
+[gd_scene load_steps=9 format=3 uid="uid://bvlw5modpihn4"]
 
-[ext_resource type="Script" uid="uid://drjp44erm3pif" path="res://src/basic_enemy.gd" id="1_2ahhn"]
+[ext_resource type="Script" uid="uid://drjp44erm3pif" path="res://src/base_enemy.gd" id="1_2ahhn"]
 [ext_resource type="Texture2D" uid="uid://dklgg8kamyi7m" path="res://assets/sprites/deer.png" id="1_2eh7b"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ahhn"]
+[ext_resource type="Script" uid="uid://frtdb36ignxr" path="res://src/enemy_hitbox.gd" id="2_6xda2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ahhn"]
 transparency = 1
@@ -17,12 +16,41 @@ material = SubResource("StandardMaterial3D_2ahhn")
 size = Vector2(1.8, 3)
 center_offset = Vector3(0, 1.5, 0)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ahhn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6xda2"]
+radius = 0.3
+height = 1.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6xda2"]
+radius = 0.3
+
 [node name="BasicEnemy" type="CharacterBody3D"]
 script = ExtResource("1_2ahhn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Sprite" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_6xda2")
+
+[node name="Capsule" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_2ahhn")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("QuadMesh_6xda2")
+[node name="BodyShot" type="Area3D" parent="." node_paths=PackedStringArray("enemy")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_6xda2")
+enemy = NodePath("..")
+
+[node name="Capsule" type="CollisionShape3D" parent="BodyShot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_6xda2")
+
+[node name="Headshot" type="Area3D" parent="." node_paths=PackedStringArray("enemy")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_6xda2")
+enemy = NodePath("..")
+
+[node name="Sphere" type="CollisionShape3D" parent="Headshot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73, 0)
+shape = SubResource("SphereShape3D_6xda2")

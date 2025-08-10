@@ -4,11 +4,18 @@ const RADIANS_PER_DOT = deg_to_rad(0.022)
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+const RAY_DISTANCE = 100.0
+const RAY_VECTOR = Vector3.FORWARD * RAY_DISTANCE
+
 var pitch := 0.0
 var yaw := 0.0
+var shot_fired := false
 
 @export var camera: Node3D
 @export var mouse_sensitivity := 3.5
+#@export var max_aim_deflection_degrees := 2.0
+@export_flags_3d_physics var body_shot_mask := 0
+@export_flags_3d_physics var head_shot_mask := 0
 
 
 func _ready() -> void:
@@ -28,8 +35,10 @@ func _input(event: InputEvent) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED \
-			and event is InputEventMouseMotion:
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		return
+
+	if event is InputEventMouseMotion:
 		var relative_angle = RADIANS_PER_DOT * mouse_sensitivity * event.relative
 
 		pitch -= relative_angle.y
@@ -40,6 +49,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		transform.basis = Basis.IDENTITY.rotated(Vector3.UP, yaw)
 		camera.transform.basis = Basis.IDENTITY.rotated(Vector3.RIGHT, pitch)
+
+	elif event is InputEventMouseButton \
+			and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		shot_fired = true
+		get_viewport().set_input_as_handled()
 
 
 func _process(delta: float) -> void:
@@ -63,5 +77,27 @@ func _process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 
+func hit_check(mask: int) -> Dictionary:
+	var query := PhysicsRayQueryParameters3D.create(
+			camera.global_position, camera.to_global(RAY_VECTOR), mask)
+	query.collide_with_areas = true
+	return get_world_3d().direct_space_state.intersect_ray(query)
+
+
+func shot_check(mask: int) -> BaseEnemy:
+	var hit := hit_check(mask)
+	return hit.collider.enemy if hit and hit.collider is EnemyHitbox else null
+
+
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
+
+	if shot_fired:
+		var head_shot := shot_check(head_shot_mask)
+		if head_shot:
+			print("HEAD SHOT! on " + head_shot.name)
+		else:
+			var body_shot := shot_check(body_shot_mask)
+			if body_shot:
+				print("BODY SHOT! on " + body_shot.name)
+		shot_fired = false

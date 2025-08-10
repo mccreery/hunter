@@ -20,6 +20,8 @@ material = SubResource("StandardMaterial3D_insbl")
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
 script = ExtResource("1_4flbx")
 camera = NodePath("Camera3D")
+body_shot_mask = 2
+head_shot_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
