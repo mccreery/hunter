@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=35 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
@@ -6,10 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/models/Tree.fbx" id="4_836ik"]
 [ext_resource type="PackedScene" uid="uid://bvlw5modpihn4" path="res://assets/scenes/basic_enemy.tscn" id="5_etxf0"]
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
-[ext_resource type="Script" uid="uid://dnrrcn8fmgd5m" path="res://assets/scenes/omni_light_3d_2.gd" id="6_ytb86"]
 [ext_resource type="Texture2D" uid="uid://b0jt31sg30cpa" path="res://assets/sprites/Grass.png" id="7_xplbd"]
 [ext_resource type="Texture2D" uid="uid://0jf65fa6i52l" path="res://assets/sprites/gunmount.png" id="8_6rsl6"]
-[ext_resource type="PackedScene" path="res://assets/scenes/enemy_corpse.tscn" id="9_p5d64"]
+[ext_resource type="PackedScene" uid="uid://d23hvp7rbw47w" path="res://assets/scenes/enemy_corpse.tscn" id="9_p5d64"]
 [ext_resource type="Texture2D" uid="uid://cx21m4ebixhxj" path="res://assets/sprites/fire2.png" id="10_ov4sg"]
 [ext_resource type="Texture2D" uid="uid://bgk8buasdlhqv" path="res://assets/sprites/fire.png" id="11_ua5jh"]
 [ext_resource type="Texture2D" uid="uid://ykfblf8wium4" path="res://assets/sprites/fire3.png" id="12_ua5jh"]
@@ -175,27 +174,8 @@ shape = SubResource("BoxShape3D_tkxyu")
 transform = Transform3D(0.884035, 0.467421, 5.06899e-09, -0.467421, 0.884035, 2.04316e-08, 5.06899e-09, -2.04316e-08, 1, 0.379591, -0.130084, -0.797534)
 shape = SubResource("BoxShape3D_j2eim")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.629652, 0.685628, -0.365314, -0.0377104, 0.442705, 0.895874, 0.775962, 0.577865, -0.252895, -0.314066, 5.07245, -0.601703)
-light_color = Color(0.0694045, 0.172814, 0.112829, 1)
-light_energy = 1.193
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_angular_distance = 38.93
-light_specular = 0.0
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.560074, -0.828126, -0.022863, 0.529649, -0.379158, 0.758756, -0.637015, 0.412851, 0.650973, -0.314066, 5.07245, -0.601703)
-light_color = Color(0.318249, 0.308957, 0.415349, 1)
-light_energy = 0.7
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_angular_distance = 38.93
-light_specular = 0.0
-
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-visible = false
 mesh = SubResource("PlaneMesh_06ig3")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
@@ -638,10 +618,27 @@ transform = Transform3D(-0.275755, 0, 0.961228, 0, 1, 0, -0.961228, 0, -0.275755
 [node name="Cylinder_007" parent="Trees/Tree72" index="0"]
 material_override = SubResource("StandardMaterial3D_836ik")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_j2eim")
+[node name="Lights" type="Node" parent="."]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="WorldEnvironment"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.629652, 0.685627, -0.365313, -0.0377104, 0.442705, 0.895874, 0.775962, 0.577865, -0.252895, -0.314066, 5.07245, -0.601703)
+light_color = Color(0.0694045, 0.172814, 0.112829, 1)
+light_energy = 1.193
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 38.93
+light_specular = 0.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(-0.560074, -0.828127, -0.0228632, 0.529649, -0.379157, 0.758756, -0.637015, 0.41285, 0.650973, -0.314066, 5.07245, -0.601703)
+light_color = Color(0.318249, 0.308957, 0.415349, 1)
+light_energy = 0.7
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_angular_distance = 38.93
+light_specular = 0.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.730373, 2.0604, -8.22698)
 light_color = Color(0.73, 0, 0, 1)
 light_energy = 2.668
@@ -649,20 +646,20 @@ light_bake_mode = 0
 omni_range = 3.763
 omni_attenuation = 1.678
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="WorldEnvironment"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25277, 1.10425, -10.2478)
 light_color = Color(0.73, 0, 0, 1)
 light_energy = 1.068
 light_bake_mode = 0
 omni_range = 1.503
 omni_attenuation = 0.953
-script = ExtResource("6_ytb86")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j2eim")
 
 [node name="BG Music" type="AudioStreamPlayer" parent="."]
 volume_db = -1.933
 autoplay = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BasicEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_etxf0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15351, 0, 0.0561662)
