@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=36 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
@@ -6,11 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/models/Tree.fbx" id="4_836ik"]
 [ext_resource type="PackedScene" uid="uid://bvlw5modpihn4" path="res://assets/scenes/basic_enemy.tscn" id="5_etxf0"]
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
+[ext_resource type="Script" uid="uid://dnrrcn8fmgd5m" path="res://assets/scenes/omni_light_3d_2.gd" id="6_ytb86"]
 [ext_resource type="Texture2D" uid="uid://b0jt31sg30cpa" path="res://assets/sprites/Grass.png" id="7_xplbd"]
 [ext_resource type="Texture2D" uid="uid://0jf65fa6i52l" path="res://assets/sprites/gunmount.png" id="8_6rsl6"]
 [ext_resource type="PackedScene" path="res://assets/scenes/enemy_corpse.tscn" id="9_p5d64"]
 [ext_resource type="Texture2D" uid="uid://cx21m4ebixhxj" path="res://assets/sprites/fire2.png" id="10_ov4sg"]
 [ext_resource type="Texture2D" uid="uid://bgk8buasdlhqv" path="res://assets/sprites/fire.png" id="11_ua5jh"]
+[ext_resource type="Texture2D" uid="uid://ykfblf8wium4" path="res://assets/sprites/fire3.png" id="12_ua5jh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rsl6"]
 next_pass = ExtResource("3_836ik")
@@ -102,15 +104,18 @@ albedo_texture = ExtResource("8_6rsl6")
 [sub_resource type="SpriteFrames" id="SpriteFrames_ov4sg"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 1.4,
 "texture": ExtResource("10_ov4sg")
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_ua5jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ua5jh")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 9.0
 }]
 
 [node name="Main" type="Node3D"]
@@ -651,6 +656,7 @@ light_energy = 1.068
 light_bake_mode = 0
 omni_range = 1.503
 omni_attenuation = 0.953
+script = ExtResource("6_ytb86")
 
 [node name="BG Music" type="AudioStreamPlayer" parent="."]
 volume_db = -1.933
@@ -712,7 +718,7 @@ mesh = SubResource("QuadMesh_48cn3")
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, -1.19068, 1.16867, -10.5797)
 sprite_frames = SubResource("SpriteFrames_ov4sg")
 autoplay = "default"
-frame_progress = 0.0109546
+frame_progress = 0.253731
 
 [editable path="Cabin"]
 [editable path="Trees/Tree"]
