@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=37 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/models/Tree.fbx" id="4_836ik"]
 [ext_resource type="PackedScene" uid="uid://bvlw5modpihn4" path="res://assets/scenes/basic_enemy.tscn" id="5_etxf0"]
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
+[ext_resource type="AudioStream" uid="uid://bujbqm1hhjmjv" path="res://assets/Forest Ambience.wav" id="7_ahyqc"]
 [ext_resource type="AudioStream" uid="uid://cf8kfk786shec" path="res://assets/vanishinghope.mp3" id="7_rin3v"]
 [ext_resource type="Texture2D" uid="uid://b0jt31sg30cpa" path="res://assets/sprites/Grass.png" id="7_xplbd"]
 [ext_resource type="Texture2D" uid="uid://0jf65fa6i52l" path="res://assets/sprites/gunmount.png" id="8_6rsl6"]
@@ -662,6 +663,12 @@ environment = SubResource("Environment_j2eim")
 stream = ExtResource("7_rin3v")
 volume_db = -1.933
 pitch_scale = 1.33
+autoplay = true
+
+[node name="BG Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ahyqc")
+volume_db = -25.0
+pitch_scale = 0.85
 autoplay = true
 
 [node name="BasicEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("5_etxf0")]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bujbqm1hhjmjv"
+path="res://.godot/imported/Forest Ambience.wav-c2a980db5c4338b8d040f6f6e388a55e.sample"
+
+[deps]
+
+source_file="res://assets/Forest Ambience.wav"
+dest_files=["res://.godot/imported/Forest Ambience.wav-c2a980db5c4338b8d040f6f6e388a55e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
