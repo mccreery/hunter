@@ -29,6 +29,6 @@ shape = SubResource("CapsuleShape3D_hk8x1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54576, 0)
 
 [node name="Gun" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.26542, 0, 0, 0, 1.50799, 0, 0, 0, 1.50799, -0.107909, 1.25839, -0.836588)
+transform = Transform3D(0.901947, 0, 0, 0, 1.23023, 0, 0, 0, 1.23023, 0.441972, 1.38562, -0.509158)
 layers = 2
 mesh = SubResource("QuadMesh_rug40")
