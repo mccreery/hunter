@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=27 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
 [ext_resource type="Material" uid="uid://dcvyfg7ls46n1" path="res://assets/Outline.tres" id="3_836ik"]
 [ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/models/Tree.fbx" id="4_836ik"]
-[ext_resource type="Texture2D" uid="uid://crl2ogaux174y" path="res://assets/sprites/DefaultMaterial_Base_color.png" id="4_xplbd"]
 [ext_resource type="PackedScene" path="res://assets/scenes/basic_enemy.tscn" id="5_etxf0"]
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
 [ext_resource type="Texture2D" uid="uid://dtvhjd12en5wl" path="res://assets/sprites/Untitled_Artwork.png" id="7_xplbd"]
@@ -38,7 +37,7 @@ size = Vector3(1.38488, 1.15527, 1.77011)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfrgt"]
 albedo_color = Color(0.92, 0.92, 0.92, 1)
-albedo_texture = ExtResource("4_xplbd")
+albedo_texture = ExtResource("6_6rsl6")
 uv1_scale = Vector3(65, 65, 65)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_06ig3"]
@@ -645,58 +644,6 @@ mesh = SubResource("QuadMesh_6rsl6")
 
 [node name="InstancedGrass" type="MultiMeshInstance3D" parent="Grass"]
 multimesh = SubResource("MultiMesh_xplbd")
-
-[node name="Rock01" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.669533, 0, -0.742783, 0, 1, 0, 0.742783, 0, 0.669533, -2.67239, 0.00612807, -13.3047)
-script = null
-
-[node name="Rock02" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(-1.63071, 0, -0.911371, 0, 1.8681, 0, 0.911371, 0, -1.63071, -3.90645, 0, -10.6039)
-script = null
-
-[node name="Rock03" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(0.313754, 0, -1.02948, 0, 0.852082, 0, 0.821683, 0, 0.393101, 13.3919, 0.00612617, -5.65915)
-script = null
-
-[node name="Rock04" parent="."]
-_import_path = NodePath("")
-unique_name_in_owner = false
-process_mode = 0
-process_priority = 0
-process_physics_priority = 0
-process_thread_group = 0
-physics_interpolation_mode = 0
-auto_translate_mode = 0
-editor_description = ""
-transform = Transform3D(-0.425218, 0, -0.964645, 0, 1.14838, 0, 0.769932, 0, -0.532754, 15.904, 0.00612569, -5.12107)
-script = null
 
 [editable path="Cabin"]
 [editable path="Trees/Tree"]
