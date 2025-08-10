@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://kdfh8gwqttgb" path="res://assets/models/Tree.fbx" id="4_836ik"]
 [ext_resource type="PackedScene" path="res://assets/scenes/basic_enemy.tscn" id="5_etxf0"]
 [ext_resource type="Texture2D" uid="uid://d3vqo08m4wn4d" path="res://assets/sprites/Ground_Albedo.png" id="6_6rsl6"]
-[ext_resource type="Texture2D" uid="uid://dtvhjd12en5wl" path="res://assets/sprites/Untitled_Artwork.png" id="7_xplbd"]
+[ext_resource type="Texture2D" uid="uid://b0jt31sg30cpa" path="res://assets/sprites/Grass.png" id="7_xplbd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rsl6"]
 next_pass = ExtResource("3_836ik")
