@@ -1,19 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://d23hvp7rbw47w"]
 
 [ext_resource type="Texture2D" uid="uid://b33o5e1e40ysk" path="res://assets/sprites/deerdead.png" id="1_1rtk2"]
+[ext_resource type="Script" uid="uid://b1q3e7fnj7aon" path="res://src/random_flip_billboard.gd" id="2_j45pl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j45pl"]
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 albedo_texture = ExtResource("1_1rtk2")
 billboard_mode = 2
-
-[sub_resource type="QuadMesh" id="QuadMesh_a0w5g"]
-material = SubResource("StandardMaterial3D_j45pl")
-size = Vector2(2.7, 2.2)
 
 [node name="EnemyCorpse" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.160545, 0)
-mesh = SubResource("QuadMesh_a0w5g")
+script = ExtResource("2_j45pl")
+size = Vector2(2.7, 2.2)
+material = SubResource("StandardMaterial3D_j45pl")
