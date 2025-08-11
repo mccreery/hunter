@@ -9,6 +9,7 @@ const RAY_VECTOR = Vector3.FORWARD * RAY_DISTANCE
 
 var pitch := 0.0
 var yaw := 0.0
+var can_fire := true
 var shot_fired := false
 
 @export var camera: Node3D
@@ -16,6 +17,7 @@ var shot_fired := false
 #@export var max_aim_deflection_degrees := 2.0
 @export_flags_3d_physics var body_shot_mask := 0
 @export_flags_3d_physics var head_shot_mask := 0
+@export var gun_effects: GunEffects
 
 
 func _ready() -> void:
@@ -50,7 +52,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		transform.basis = Basis.IDENTITY.rotated(Vector3.UP, yaw)
 		camera.transform.basis = Basis.IDENTITY.rotated(Vector3.RIGHT, pitch)
 
-	elif event is InputEventMouseButton \
+	elif can_fire and event is InputEventMouseButton \
 			and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		shot_fired = true
 		get_viewport().set_input_as_handled()
@@ -100,4 +102,8 @@ func _physics_process(_delta: float) -> void:
 			var body_shot := shot_check(body_shot_mask)
 			if body_shot:
 				print("BODY SHOT! on " + body_shot.name)
+
+		can_fire = false
 		shot_fired = false
+		await gun_effects.fire()
+		can_fire = true

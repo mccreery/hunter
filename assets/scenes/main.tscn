@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=39 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
@@ -10,8 +10,9 @@
 [ext_resource type="AudioStream" uid="uid://cf8kfk786shec" path="res://assets/vanishinghope.mp3" id="7_rin3v"]
 [ext_resource type="Texture2D" uid="uid://b0jt31sg30cpa" path="res://assets/sprites/Grass.png" id="7_xplbd"]
 [ext_resource type="Texture2D" uid="uid://0jf65fa6i52l" path="res://assets/sprites/gunmount.png" id="8_6rsl6"]
-[ext_resource type="PackedScene" path="res://assets/scenes/enemy_corpse.tscn" id="9_p5d64"]
+[ext_resource type="PackedScene" uid="uid://d23hvp7rbw47w" path="res://assets/scenes/enemy_corpse.tscn" id="9_p5d64"]
 [ext_resource type="Texture2D" uid="uid://cx21m4ebixhxj" path="res://assets/sprites/fire2.png" id="10_ov4sg"]
+[ext_resource type="Texture2D" uid="uid://jaoxd3jx4uxl" path="res://assets/sprites/reticle.png" id="10_t7a27"]
 [ext_resource type="Texture2D" uid="uid://bgk8buasdlhqv" path="res://assets/sprites/fire.png" id="11_ua5jh"]
 [ext_resource type="Texture2D" uid="uid://ykfblf8wium4" path="res://assets/sprites/fire3.png" id="12_ua5jh"]
 [ext_resource type="AudioStream" uid="uid://c8e4wf2inrmbd" path="res://assets/Fire.wav" id="15_ahyqc"]
@@ -685,35 +686,19 @@ mesh = SubResource("QuadMesh_6rsl6")
 [node name="InstancedGrass" type="MultiMeshInstance3D" parent="Grass"]
 multimesh = SubResource("MultiMesh_xplbd")
 
-[node name="Reticle" type="Node" parent="."]
-
-[node name="Horizontal" type="ColorRect" parent="Reticle"]
+[node name="Reticle" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -1.0
-offset_right = 10.0
-offset_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-
-[node name="Vertical" type="ColorRect" parent="Reticle"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1.0
-offset_top = -10.0
-offset_right = 1.0
-offset_bottom = 10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+texture = ExtResource("10_t7a27")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.6, 0, 0, 0, 0.578028, 0, 0, 0, 0.781, -1.18058, 2.00988, -10.161)
