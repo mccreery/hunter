@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c8i04rm4r2aq2"]
+
+[node name="OneShotSfx" type="AudioStreamPlayer3D"]
+autoplay = true
+
+[connection signal="finished" from="." to="." method="queue_free"]

@@ -97,11 +97,11 @@ func _physics_process(_delta: float) -> void:
 	if shot_fired:
 		var head_shot := shot_check(head_shot_mask)
 		if head_shot:
-			print("HEAD SHOT! on " + head_shot.name)
+			head_shot.hit(true)
 		else:
 			var body_shot := shot_check(body_shot_mask)
 			if body_shot:
-				print("BODY SHOT! on " + body_shot.name)
+				body_shot.hit(false)
 
 		can_fire = false
 		shot_fired = false
