@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvlw5modpihn4"]
+[gd_scene load_steps=11 format=3 uid="uid://bvlw5modpihn4"]
 
 [ext_resource type="Script" uid="uid://drjp44erm3pif" path="res://src/base_enemy.gd" id="1_2ahhn"]
 [ext_resource type="Texture2D" uid="uid://dklgg8kamyi7m" path="res://assets/sprites/deer.png" id="1_2eh7b"]
 [ext_resource type="Script" uid="uid://frtdb36ignxr" path="res://src/enemy_hitbox.gd" id="2_6xda2"]
 [ext_resource type="Texture2D" uid="uid://b4i38eg3rn371" path="res://assets/sprites/deer3.png" id="3_n4fu4"]
 [ext_resource type="Texture2D" uid="uid://dc2vr8id26jpq" path="res://assets/sprites/deer2.png" id="5_7vafp"]
+[ext_resource type="AudioStream" uid="uid://ccacse8dqneun" path="res://assets/Creature.wav" id="6_7vafp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2ahhn"]
 
@@ -68,3 +69,7 @@ billboard = 2
 sprite_frames = SubResource("SpriteFrames_dfkpo")
 autoplay = "default"
 frame_progress = 0.901301
+
+[node name="CreatureSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_7vafp")
+autoplay = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://btj2uvv8wdy26"]
+[gd_scene load_steps=38 format=3 uid="uid://btj2uvv8wdy26"]
 
 [ext_resource type="PackedScene" uid="uid://0cxve1d7o427" path="res://assets/scenes/player.tscn" id="1_db5cl"]
 [ext_resource type="PackedScene" uid="uid://qgkjm0dn20mu" path="res://assets/models/Cabin.fbx" id="2_06ig3"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cx21m4ebixhxj" path="res://assets/sprites/fire2.png" id="10_ov4sg"]
 [ext_resource type="Texture2D" uid="uid://bgk8buasdlhqv" path="res://assets/sprites/fire.png" id="11_ua5jh"]
 [ext_resource type="Texture2D" uid="uid://ykfblf8wium4" path="res://assets/sprites/fire3.png" id="12_ua5jh"]
+[ext_resource type="AudioStream" uid="uid://c8e4wf2inrmbd" path="res://assets/Fire.wav" id="15_ahyqc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rsl6"]
 next_pass = ExtResource("3_836ik")
@@ -721,11 +722,18 @@ mesh = SubResource("QuadMesh_48cn3")
 
 [node name="EnemyCorpse" parent="." instance=ExtResource("9_p5d64")]
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="Fire" type="Node" parent="."]
+
+[node name="FireSprite" type="AnimatedSprite3D" parent="Fire"]
 transform = Transform3D(0.055, 0, 0, 0, 0.055, 0, 0, 0, 0.055, -1.19068, 1.16867, -10.5797)
 sprite_frames = SubResource("SpriteFrames_ov4sg")
 autoplay = "default"
 frame_progress = 0.253731
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="Fire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03317, 0.204673, -11.9076)
+stream = ExtResource("15_ahyqc")
+autoplay = true
 
 [editable path="Cabin"]
 [editable path="Trees/Tree"]
